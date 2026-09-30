@@ -1,4 +1,4 @@
-##QuizApp
+## QuizApp
 
 영단어의 한글 뜻을 맞추는 Web Project입니다. NextJS와 PostgreSQL로만들었습니다.
 
@@ -12,7 +12,7 @@
 
 4. 기기에 따른 사용자의 기록을 DB에 저장한다
 
-##기술 스택
+## 기술 스택
 Framework: NextJS
 
 PL: Typescript
@@ -21,7 +21,7 @@ Database: PostgreSQL
 
 +TailwindCSS
 
-##구조
+## 구조
 
 ```
 src/
@@ -39,7 +39,7 @@ src/
 schema.sql
 ```
 
-##실행 방법
+## 실행 방법
 
 NodeJS, PostgreSQL
 
