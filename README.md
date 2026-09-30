@@ -1,36 +1,62 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+##QuizApp
 
-## Getting Started
+영단어의 한글 뜻을 맞추는 Web Project입니다. NextJS와 PostgreSQL로만들었습니다.
 
-First, run the development server:
+##주요 기능
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+1. 영단어를 보고 맞는 뜻을 4개 중에서 선택한다
+   
+2. 문제를 무작위로 출제되며 답을 선택하면 즉시 정답을 표시한다
+
+3. 끝나면 점수와 오답 목록을 출력한다
+
+4. 기기에 따른 사용자의 기록을 DB에 저장한다
+
+##기술 스택
+Framework: NextJS
+
+PL: Typescript
+
+Database: PostgreSQL
+
++TailwindCSS
+
+##구조
+
+```
+src/
+  app/
+    api/answer/route.ts   정답 채점 API  
+    quiz
+      page.tsx   문제를 DB에서 Server로 옮긴다 (Server Component)
+      QuizClient.tsx   문제 푸는 화면 (Client Component)
+    layout.tsx
+    page.tsx
+  fonts/
+  lib/
+    db.ts
+    user.ts
+schema.sql
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+##실행 방법
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+NodeJS, PostgreSQL
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+git clone https://github.com/본인 아이디/저장소 이름.git
 
-## Learn More
+cd 저장소 이름
 
-To learn more about Next.js, take a look at the following resources:
+npm install
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+createdb -U postgres QuizDB
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+psql -U postgres -d QuizDB -f schema.sql
 
-## Deploy on Vercel
+psql이 안 인식되면 bin 폴더의 전체 경로를 넣어서 실행하세요 (예: &C:\Program Files\PostgreSQL\18\bin)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+.env
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+DATABASE_RUL=postgresql://사용자:비밀번호@localhost:5432/QuizDB
+
+npm run dev
